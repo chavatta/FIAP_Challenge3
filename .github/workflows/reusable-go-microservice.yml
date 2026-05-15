@@ -96,7 +96,7 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
           REGISTRY: ${{ steps.ecr.outputs.registry }}
-          IMAGE_TAG: ${{ github.sha }}
+          IMAGE_TAG: v1.0.0-${{ github.sha }}
         run: |
           docker tag "${{ inputs.ecr_repository }}:${IMAGE_TAG}" "${REGISTRY}/${{ inputs.ecr_repository }}:${IMAGE_TAG}"
           docker push "${REGISTRY}/${{ inputs.ecr_repository }}:${IMAGE_TAG}"
