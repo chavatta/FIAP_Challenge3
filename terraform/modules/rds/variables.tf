@@ -26,7 +26,7 @@ variable "rds_security_group_id" {
 
 variable "engine_version" {
   type    = string
-  default = "15.4"
+  default = "18.4"
 }
 
 variable "allocated_storage" {

@@ -45,7 +45,7 @@ variable "eks_node_role_arn" {
 variable "eks_cluster_version" {
   type        = string
   description = "Versão do Kubernetes no EKS."
-  default     = "1.29"
+  default     = "1.34"
 }
 
 variable "node_instance_types" {
