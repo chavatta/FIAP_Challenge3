@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: targeting
-          image: nginx:alpine
+          image: 633853515534.dkr.ecr.us-east-1.amazonaws.com/togglemaster-targeting:v1.0.0-b7a7138647885a15aef26374b95fde6df5b1a613
           ports:
             - containerPort: 80
           resources:
