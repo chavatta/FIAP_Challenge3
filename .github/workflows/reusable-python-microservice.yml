@@ -23,9 +23,6 @@ on:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
-    concurrency:
-      group: gitops-main
-      cancel-in-progress: false
     permissions:
       contents: write
 
