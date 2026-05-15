@@ -124,7 +124,7 @@ jobs:
           for attempt in 1 2 3; do
             echo "Tentativa $attempt/3"
 
-            git pull --rebase
+            git pull
 
             git add "${{ inputs.gitops_manifest }}"
 
