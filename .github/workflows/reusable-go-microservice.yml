@@ -121,13 +121,35 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         working-directory: ${{ github.workspace }}
         run: |
+          set -e
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull
-          git add "${{ inputs.gitops_manifest }}"
-          if git diff --staged --quiet; then
-            echo "Nada a commitar."
-          else
-            git commit -m "gitops: bump ${{ inputs.service_name }} para ${{ github.sha }}"
-            git push
-          fi
+
+          for attempt in 1 2 3; do
+            echo "Tentativa $attempt/3"
+
+            git pull --rebase
+
+            git add "${{ inputs.gitops_manifest }}"
+
+            if git diff --staged --quiet; then
+              echo "Nada a commitar."
+              exit 0
+            fi
+
+            git commit -m "gitops: bump ${{ inputs.service_name }} para ${{ github.sha }}" || true
+
+            if git push; then
+              echo "Push realizado com sucesso."
+              exit 0
+            fi
+
+            echo "Falha no push. Tentando novamente..."
+            
+            git reset --soft HEAD~1 || true
+            sleep 5
+          done
+
+          echo "Falha após 3 tentativas."
+          exit 1
