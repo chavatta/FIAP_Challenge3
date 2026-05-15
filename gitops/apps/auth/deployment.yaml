@@ -18,7 +18,7 @@ spec:
       containers:
         - name: auth
           # CI atualiza esta tag (GitOps). Imagem inicial pode ser substituída pelo ECR.
-          image: nginx:alpine
+          image: 633853515534.dkr.ecr.us-east-1.amazonaws.com/togglemaster-auth:v1.0.0-a6379f784ab3ccf739c1fdd77b3979c89792208e
           ports:
             - containerPort: 80
           resources:
