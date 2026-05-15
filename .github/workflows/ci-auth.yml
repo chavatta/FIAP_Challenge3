@@ -17,6 +17,8 @@ on:
 
 jobs:
   pipeline:
+    permissions:
+      contents: write
     uses: ./.github/workflows/reusable-go-microservice.yml
     secrets: inherit
     with:
