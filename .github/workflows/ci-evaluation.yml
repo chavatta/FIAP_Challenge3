@@ -17,6 +17,9 @@ on:
 
 jobs:
   pipeline:
+    concurrency:
+      group: gitops-main
+      cancel-in-progress: false
     permissions:
       contents: write
     uses: ./.github/workflows/reusable-go-microservice.yml
