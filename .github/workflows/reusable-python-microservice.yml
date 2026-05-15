@@ -63,7 +63,7 @@ jobs:
           vuln-type: os,library
 
       - name: Docker build
-        run: docker build -t "${{ inputs.ecr_repository }}:${{ github.sha }}" .
+        run: docker build -t "${{ inputs.ecr_repository }}:v1.0.0-${{ github.sha }}" .
 
       - name: Trivy image scan — falha em CRITICAL
         uses: aquasecurity/trivy-action@master
@@ -108,7 +108,7 @@ jobs:
           REGISTRY: ${{ steps.ecr.outputs.registry }}
           MANIFEST: ${{ github.workspace }}/${{ inputs.gitops_manifest }}
         run: |
-          export IMG="${REGISTRY}/${{ inputs.ecr_repository }}:${{ github.sha }}"
+          export IMG="${REGISTRY}/${{ inputs.ecr_repository }}:v1.0.0-${{ github.sha }}"
           yq -i '.spec.template.spec.containers[0].image = strenv(IMG)' "$MANIFEST"
           echo "Nova imagem: $IMG"
 
