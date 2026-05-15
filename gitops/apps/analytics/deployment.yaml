@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: analytics
-          image: 633853515534.dkr.ecr.us-east-1.amazonaws.com/togglemaster-analytics:v1.0.0-b53678dacefeb780dba04b989bca57b2f1fa7a43
+          image: 633853515534.dkr.ecr.us-east-1.amazonaws.com/togglemaster-analytics:v1.0.0-01422d2f975d4eaa658d51ff3ae93d5ca6acd00a
           ports:
             - containerPort: 80
           resources:
