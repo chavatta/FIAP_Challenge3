@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: targeting
-          image: 633853515534.dkr.ecr.us-east-1.amazonaws.com/togglemaster-targeting:v1.0.0-a6379f784ab3ccf739c1fdd77b3979c89792208e
+          image: 633853515534.dkr.ecr.us-east-1.amazonaws.com/togglemaster-targeting:v1.0.0-01422d2f975d4eaa658d51ff3ae93d5ca6acd00a
           ports:
             - containerPort: 80
           resources:
